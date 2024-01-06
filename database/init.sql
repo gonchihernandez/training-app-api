@@ -28,7 +28,7 @@ CREATE TABLE exercices (
 
 CREATE TABLE trainings (
     name VARCHAR(255) NOT NULL,
-    image BYTEA NOT NULL,
+    image BYTEA,
     description VARCHAR(255) NOT NULL,
     CONSTRAINT PK_Trainings PRIMARY KEY (name)
 );
