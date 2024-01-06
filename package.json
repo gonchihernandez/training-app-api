@@ -1,7 +1,8 @@
 {
-  "name": "pern-tasks",
+  "name": "training-app-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "training API to manage trainings routines",
+  "author": "gonchiHernandez",
   "main": "src/index.js",
   "type": "module",
   "scripts": {
@@ -9,8 +10,6 @@
     "start": "node ."
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cookie-parser": "^1.4.6",
