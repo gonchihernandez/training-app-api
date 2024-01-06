@@ -1,0 +1,707 @@
+{
+	"info": {
+		"_postman_id": "20e4d9a5-c8e1-429b-86d7-79ee6606be46",
+		"name": "Training-app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3361072"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "auth-signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"oscar\",\n    \"email\": \"oscar@gmail.com\",\n    \"password\": \"abcd1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{development}}/api/signup",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "auth-signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"gonzalo.hernandez2410@gmail.com\",\n    \"password\": \"abcd1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{development}}/api/signin",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "auth-signout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{development}}/api/signout",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"signout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "auth-profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"gonzalo.hernandez2410@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{development}}/api/profile",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "exercices",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{development}}/api/exercices",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"exercices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"cuadriceps\",\n    \"sets\": 7,\n    \"description\": \"you are building your legs, son!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{development}}/api/exercices",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"exercices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get an specific one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{development}}/api/exercices/:name",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"exercices",
+								":name"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "cuadriceps"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"cuadriceps EDITED\",\n    \"sets\": 4,\n    \"description\": \"you are building your legs, son! Edited\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{development}}/api/exercices/:id",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"exercices",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "cuadriceps"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete an specific one",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{development}}/api/exercices/:name",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"exercices",
+								":name"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "cuadriceps"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "trainings",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{development}}/api/training",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"training"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get an specific one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{development}}/api/training/:name",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"training",
+								":name"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "arms training"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"training 2\",\n    \"description\": \"this is the training 2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{development}}/api/training",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"training"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"training 2\",\n    \"description\": \"this is the training 2 EDITED\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{development}}/api/training/:id",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"training",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "training 2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete an specific one",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{development}}/api/training/:id",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"training",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "training 2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "trainings sessions",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{development}}/api/trainings_sessions",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"trainings_sessions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get training session by name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{development}}/api/trainings_sessions/:name",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"trainings_sessions",
+								":name"
+							],
+							"variable": [
+								{
+									"key": "name",
+									"value": "arms training"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"training_name\": \"arms training\",\n    \"exercice_name\": \"posteriores\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{development}}/api/trainings_sessions",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"trainings_sessions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"training_name\": \"arms training\",\n    \"exercice_name\": \"aductores\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{development}}/api/trainings_sessions/:id",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"trainings_sessions",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "14"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete an specific one",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{development}}/api/training/:id",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"training",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "14"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "server",
+			"item": [
+				{
+					"name": "test-server",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{development}}:3000",
+							"host": [
+								"{{development}}"
+							],
+							"port": "3000"
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "test-db-connection",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{development}}:3000/api/ping",
+							"host": [
+								"{{development}}"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"ping"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user training session",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{development}}/api/user_trainings_sessions",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"user_trainings_sessions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get training session by user id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{development}}/api/user_trainings_sessions/:userEmail",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"user_trainings_sessions",
+								":userEmail"
+							],
+							"variable": [
+								{
+									"key": "userEmail",
+									"value": "oscar@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"training_name\": \"arms training\",\n    \"user_id\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{development}}/api/user_trainings_sessions",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"user_trainings_sessions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"training_name\": \"training 2\",\n    \"user_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{development}}/api/user_trainings_sessions/:id",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"user_trainings_sessions",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete an specific one",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{development}}/api/user_trainings_sessions/:id",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"user_trainings_sessions",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "development",
+			"value": "localhost"
+		}
+	]
+}
