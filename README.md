@@ -1,16 +1,24 @@
-# PERN Tasks
+# PEN Training
 
-PERN Tasks is a robust task management application crafted with the PERN technology stack, which integrates PostgreSQL, Express, React, and Node.js. This web application provides a user-friendly interface for creating, managing, and organizing tasks.
+PEN Trainig is a robust training management application crafted with the PEN technology stack, which integrates PostgreSQL, Express, and Node.js. This web application provides a user-friendly api for creating, managing, and organizing training routines.
 
 **Features**
-1. User-friendly interface
-2. Add, edit, and delete tasks (CRUD)
+
+1. Add, edit, and delete exorcises (CRUD)
+2. Add, edit, and delete trainings (CRUD)
+3. Add, edit, and delete users (CRUD)
+4. Add, edit, and delete users-trainings (CRUD)
 
 **Technologies**
+
 1. PostgreSQL - for database management
 2. Express - as the back-end web application framework
-3. React - for building interactive user interfaces
-4. Node.js - as the JavaScript runtime environment
+3. Node.js - as the JavaScript runtime environment
+4. Postman - as a popular API development and testing tool
+
+**Database diagram**
+
+![Sample Image](database/diagram.png)
 
 ## Installation
 
@@ -19,14 +27,13 @@ You need to have Node.js and npm installed on your PC to run this app. If you do
 Clone the repository:
 
 ```bash
-git clone https://github.com/fazt/pern-tasks.git
-cd pern-tasks
-npm install
-npm start
+git clone https://github.com/gonchihernandez/training-app-api.git
+cd training-app-api
+yarn install
+yarn start
 ```
 
 ### Next Features in other version
 
-1. Search and filter tasks
-1. Prioritize tasks
-1. Set due dates for tasks
+1. Add tests
+2. Check architecture
