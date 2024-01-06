@@ -1,18 +1,18 @@
-import bcrypt from "bcrypt";
-import { pool } from "../db.js";
-import { createAccessToken } from "../libs/jwt.js";
-import md5 from 'md5'
+import bcrypt from 'bcrypt';
+import { pool } from '../db.js';
+import { createAccessToken } from '../libs/jwt.js';
+import md5 from 'md5';
 
 export const signin = async (req, res) => {
   const { email, password } = req.body;
 
-  const result = await pool.query("SELECT * FROM users WHERE email = $1", [
+  const result = await pool.query('SELECT * FROM users WHERE email = $1', [
     email,
   ]);
 
   if (result.rowCount === 0) {
     return res.status(400).json({
-      message: "El correo no esta registrado",
+      message: 'Email is not registered',
     });
   }
 
@@ -20,16 +20,16 @@ export const signin = async (req, res) => {
 
   if (!validPassword) {
     return res.status(400).json({
-      message: "La contraseña es incorrecta",
+      message: 'Password is incorrect',
     });
   }
 
   const token = await createAccessToken({ id: result.rows[0].id });
 
-  res.cookie("token", token, {
+  res.cookie('token', token, {
     // httpOnly: true,
     secure: true,
-    sameSite: "none",
+    sameSite: 'none',
     maxAge: 24 * 60 * 60 * 1000, // 1 day
   });
 
@@ -44,24 +44,24 @@ export const signup = async (req, res, next) => {
     const gravatar = `https://www.gravatar.com/avatar/${md5(email)}`;
 
     const result = await pool.query(
-      "INSERT INTO users(name, email, password, gravatar) VALUES($1, $2, $3, $4) Returning *",
+      'INSERT INTO users(name, email, password, gravatar) VALUES($1, $2, $3, $4) Returning *',
       [name, email, hashedPassword, gravatar]
     );
 
     const token = await createAccessToken({ id: result.rows[0].id });
 
-    res.cookie("token", token, {
+    res.cookie('token', token, {
       // httpOnly: true,
       secure: true,
-      sameSite: "none",
+      sameSite: 'none',
       maxAge: 24 * 60 * 60 * 1000, // 1 day
     });
 
     return res.json(result.rows[0]);
   } catch (error) {
-    if (error.code === "23505") {
+    if (error.code === '23505') {
       return res.status(400).json({
-        message: "El correo ya esta registrado",
+        message: 'Email already exists',
       });
     }
 
@@ -72,9 +72,20 @@ export const signup = async (req, res, next) => {
 export const signout = (req, res) => {
   res.clearCookie('token');
   res.sendStatus(200);
-}
+};
 
 export const profile = async (req, res) => {
-  const result = await pool.query('SELECT * FROM users WHERE id = $1', [req.userId]);
+  const { email } = req.body;
+
+  const result = await pool.query('SELECT * FROM users WHERE email = $1', [
+    email,
+  ]);
+
+  if (result.rowCount === 0) {
+    return res.status(404).json({
+      message: 'There is no user with that email',
+    });
+  }
+
   return res.json(result.rows[0]);
-} 
+};

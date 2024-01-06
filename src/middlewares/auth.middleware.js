@@ -1,21 +1,22 @@
-import jwt from "jsonwebtoken";
+import jwt from 'jsonwebtoken';
+import { JWT } from '../config';
 
 export const isAuth = (req, res, next) => {
   const token = req.cookies.token;
 
   if (!token) {
     return res.status(401).json({
-      message: "No estas autorizado",
+      message: 'Not authorized',
     });
   }
 
-  jwt.verify(token, "xyz123", (err, decoded) => {
+  jwt.verify(token, JWT, (err, decoded) => {
     if (err)
       return res.status(401).json({
-        message: "No estas autorizado",
+        message: 'Not authorized',
       });
 
-    req.userId = decoded.id; 
+    req.userId = decoded.id;
 
     next();
   });
