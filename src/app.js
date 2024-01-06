@@ -6,6 +6,8 @@ import cors from 'cors';
 import taskRoutes from './routes/tasks.routes.js';
 import authRoutes from './routes/auth.routes.js';
 import exercicesRoutes from './routes/exercices.routes.js';
+import trainingsRoutes from './routes/trainings.routes.js';
+import trainingsSessionsRoutes from './routes/trainings_sessions.routes.js';
 
 import { ORIGIN } from './config.js';
 import { pool } from './db.js';
@@ -33,6 +35,8 @@ app.get('/api/ping', async (req, res) => {
 app.use('/api', taskRoutes);
 app.use('/api', authRoutes);
 app.use('/api', exercicesRoutes);
+app.use('/api', trainingsRoutes);
+app.use('/api', trainingsSessionsRoutes);
 
 // Error Hander
 app.use((err, req, res, next) => {
