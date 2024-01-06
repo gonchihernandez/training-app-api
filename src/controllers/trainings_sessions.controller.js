@@ -1,7 +1,6 @@
 import { pool } from '../db.js';
 
 export const getAllTrainingsSessions = async (req, res, next) => {
-  console.log('getAllTrainingsSessions');
   const result = await pool.query('SELECT * FROM trainings_sessions');
   return res.json(result.rows);
 };
