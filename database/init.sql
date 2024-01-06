@@ -42,13 +42,14 @@ CREATE TABLE trainings_sessions (
     CONSTRAINT PK_Trainings_sessions PRIMARY KEY (id)
 );
 
-CREATE TABLE user_trainings_sessions (
+CREATE TABLE user_trainings (
     id SERIAL NOT NULL,
-	training_session INTEGER NOT NULL,
+	training VARCHAR(255) NOT NULL,
 	student INTEGER NOT NULL,
-	CONSTRAINT FK_Training_session FOREIGN KEY (training_session) REFERENCES trainings_sessions(id),
+	CONSTRAINT FK_Training FOREIGN KEY (training) REFERENCES trainings(name),
 	CONSTRAINT FK_User FOREIGN KEY (student) REFERENCES users(id),
-    CONSTRAINT PK_User_trainings_sessions PRIMARY KEY (id)
+    CONSTRAINT PK_User_trainings_sessions PRIMARY KEY (id),   
+    CONSTRAINT UQ_TrainingStudent UNIQUE (training, student)
 );
 
 
