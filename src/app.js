@@ -9,8 +9,8 @@ import trainingsRoutes from './routes/trainings.routes.js';
 import trainingsSessionsRoutes from './routes/trainings_sessions.routes.js';
 import userTrainingsSessionsRoutes from './routes/user_trainings.routes.js';
 
-import { ORIGIN } from './config.js';
-import { pool } from './db.js';
+import { ORIGIN } from './config/index.js';
+import { pool } from './config/db.js';
 
 const app = express();
 

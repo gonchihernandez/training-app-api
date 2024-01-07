@@ -4,8 +4,8 @@ import {
   PG_PASSWORD,
   PG_PORT,
   PG_USER,
-} from "./config.js";
-import pg from "pg";
+} from './index.js';
+import pg from 'pg';
 
 export const pool = new pg.Pool({
   port: PG_PORT,
@@ -15,6 +15,6 @@ export const pool = new pg.Pool({
   database: PG_DATABASE,
 });
 
-pool.on("connect", () => {
-  console.log("Database connected");
+pool.on('connect', () => {
+  console.log('Database connected');
 });

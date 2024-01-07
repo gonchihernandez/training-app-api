@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { JWT_SECRET } from '../config.js';
+import { JWT_SECRET } from '../config/index.js';
 
 export const isAuth = (req, res, next) => {
   const token = req.cookies.token;
