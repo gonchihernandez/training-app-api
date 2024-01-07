@@ -1,15 +1,23 @@
 {
   "name": "training-app-api",
   "version": "1.0.0",
-  "description": "training API to manage trainings routines",
-  "author": "gonchiHernandez",
+  "description": "Training API to manage trainings routines",
+  "author": {
+    "name": "Gonzalo Hernandez",
+    "email": "gonzalo.hernandez2410@gmail.com",
+    "url": "https://github.com/gonchihernandez"
+  },
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gonchihernandez/training-app-api.git"
+  },
   "main": "src/index.js",
   "type": "module",
   "scripts": {
     "dev": "nodemon .",
     "start": "node ."
   },
-  "keywords": [],
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cookie-parser": "^1.4.6",
