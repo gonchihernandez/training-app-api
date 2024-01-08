@@ -6,9 +6,10 @@ export const getAllTrainings = async (req, res, next) => {
 };
 
 export const getTraining = async (req, res) => {
-  const result = await pool.query('SELECT * FROM trainings WHERE name = $1', [
-    req.params.name,
-  ]);
+  const result = await pool.query(
+    'SELECT * FROM trainings WHERE training_name = $1',
+    [req.params.name]
+  );
 
   if (result.rowCount === 0) {
     return res.status(404).json({
@@ -24,7 +25,7 @@ export const createTraining = async (req, res, next) => {
 
   try {
     const result = await pool.query(
-      'INSERT INTO trainings (name,image, description) VALUES ($1, $2,$3) RETURNING *',
+      'INSERT INTO trainings (training_name,training_image, training_description) VALUES ($1, $2,$3) RETURNING *',
       [name, image, description]
     );
 
@@ -47,7 +48,7 @@ export const updateTraining = async (req, res) => {
   const { name, image, description } = req.body;
 
   const result = await pool.query(
-    'UPDATE trainings SET name = $2, image = $3, description = $4 WHERE name = $1 RETURNING *',
+    'UPDATE trainings SET training_name = $2, training_image = $3, training_description = $4 WHERE training_name = $1 RETURNING *',
     [id, name, image, description]
   );
 
@@ -61,9 +62,10 @@ export const updateTraining = async (req, res) => {
 };
 
 export const deleteTraining = async (req, res) => {
-  const result = await pool.query('DELETE FROM trainings WHERE name = $1', [
-    req.params.id,
-  ]);
+  const result = await pool.query(
+    'DELETE FROM trainings WHERE training_name = $1',
+    [req.params.id]
+  );
 
   if (result.rowCount === 0) {
     return res.status(404).json({
