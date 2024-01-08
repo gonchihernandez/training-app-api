@@ -7,9 +7,41 @@ export const getAllTrainingsSessions = async (req, res, next) => {
   return res.json(result.rows);
 };
 
+const groupByTrainingName = (trainings) => {
+  const groupedData = {};
+
+  trainings.forEach((item) => {
+    const {
+      training_name,
+      training_image,
+      training_description,
+      name,
+      sets,
+      description,
+    } = item;
+
+    const key = JSON.stringify({
+      training_name,
+    });
+
+    if (!groupedData[key]) {
+      groupedData[key] = {
+        training_name,
+        training_image,
+        training_description,
+        exercises: [],
+      };
+    }
+
+    groupedData[key].exercises.push({ name, sets, description });
+  });
+
+  return Object.values(groupedData);
+};
+
 export const getTrainingByUser = async (req, res) => {
   const result = await pool.query(
-    'SELECT u.email,ts.training_name,e.* FROM user_trainings ut, trainings t, trainings_sessions ts, exercices e, users u WHERE u.email=$1 AND ut.student=u.id AND ut.training = t.name AND ts.training_name=t.name AND e.name = ts.exercice_name ORDER BY t.name',
+    'SELECT t.*, e.* FROM user_trainings ut, trainings t, trainings_sessions ts, exercices e, users u WHERE u.email=$1 AND ut.student=u.id AND ut.training = t.training_name AND ts.training_name=t.training_name AND e.name = ts.exercice_name ORDER BY t.training_name',
     [req.params.userEmail]
   );
 
@@ -19,7 +51,9 @@ export const getTrainingByUser = async (req, res) => {
     });
   }
 
-  return res.json(result.rows);
+  const groupedData = groupByTrainingName(result.rows);
+
+  return res.json(groupedData);
 };
 
 export const createTrainingSession = async (req, res, next) => {
